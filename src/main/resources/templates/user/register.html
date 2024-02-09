@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: url(pozadin.jpg);
+      background-size: cover;
+    }
+    .okvir {
+      display: inline-block;
+      position: relative;
+      margin: 0.2vh;
+    }
+    .prvi {
+      height: 73vh;
+      width: 100%;
+      max-width: 45vw;
+      background-image: url(prva.jpg);
+      background-position: center;
+      background-size: cover;
+      opacity: 0.82;
+      border-radius: 2vh 0vh 0vh 2vh;
+    }
+    .prvi img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 2vh 0vh 0vh 2vh;
+    }
+    .drugi {
+      height: 73vh;
+      width: 55vh;
+      max-width: 45vw;
+      background-color: rgba(58, 55, 55, 0.516);
+      text-align: center;
+      color: white;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 3vw;
+      border-radius: 0vh 2vh 2vh 0vh;
+      box-sizing: border-box;
+    }
+    p {
+      font-size: 2.99vh;
+      padding-top: 0.5vh;
+      color: rgba(255, 255, 255, 0.8);
+    }
+    input[type="text"],
+    input[type="password"] {
+      position: relative;
+      width: 20vw;
+      padding: 1.1vh;
+      height: 3vh;
+      border-radius: 1vh;
+      opacity: 0.8;
+      color: rgba(62, 59, 59, 0.553);
+      margin-bottom: 1vh;
+    }
+    .button {
+      background-color: #261da0;
+      position: relative;
+      color: white;
+      padding: 1.7vh;
+      border-radius: 1vh;
+      cursor: pointer;
+      font-size: 1vw;
+      width: 20vw;
+      transition: transform 0.3s ease-in-out;
+    }
+    .button:hover {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+<div class="okvir prvi"> </div>
+<div class="okvir drugi">
+  <p>WELCOME! </p>
+  <input type="text" placeholder="Unesite ime" />
+  <input type="text" placeholder="Unesite prezime" />
+  <input type="text" placeholder="Unesite email" />
+  <input type="password" id="passwordInput" placeholder="Unesite lozinku" />
+  <input type="password" id="passwordInput" placeholder="Unesite ponovno lozinku" /> <br/>
+  <button class="button" onclick="">Register</button>
+</div>
+</body>
+</html>
