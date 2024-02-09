@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url(22.jpg);
+            background-size: cover;
+        }
+        .kartica {
+            display: inline-block;
+            margin: 2.5vh;
+            width: 38vh;
+            height: 48vh;
+            max-width: 100%;
+            cursor:pointer;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 1vh 1.9vh 1.6vh
+            rgb(88, 24, 24);
+            transition: transform 0.3s ease-in-out;
+        }
+        .kartica img {
+            width: 100%;
+            height: 48vh;
+            background-size: cover;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .kartica:hover {
+            transform: scale(1.2);
+        }
+        .kartica .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(147, 126, 126, 0.5);
+            color: rgb(12, 11, 11);
+            text-align: center;
+            text-decoration: underline;
+            font-size: 4vh;
+            line-height: 45vh;
+            opacity: 0;
+            transition: opacity 0.35s ease-in-out;
+        }
+        .kartica:hover .overlay {
+            display: block;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="kartica">
+    <img src="male.jpg" alt="Male">
+    <div class="overlay">Male</div>
+</div>
+<div class="kartica">
+    <img src="female.jpg" alt="Female">
+    <div class="overlay">Female</div>
+</div>
+</body>
+</html>
