@@ -7,7 +7,7 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-image: url(22.jpg);
+            background-image: url("/images/22.jpg");
             background-size: cover;
         }
         .kartica {
@@ -56,11 +56,11 @@
 </head>
 <body>
 <div class="kartica">
-    <img src="male.jpg" alt="Male">
+    <img th:src="@{/images/male.jpg}" alt="Male">
     <div class="overlay">Male</div>
 </div>
 <div class="kartica">
-    <img src="female.jpg" alt="Female">
+    <img th:src="@{/images/female.jpg}" alt="Female">
     <div class="overlay">Female</div>
 </div>
 </body>
