@@ -1,4 +1,5 @@
 package fsre.stayactive.config;
+import fsre.stayactive.services.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -52,7 +53,7 @@ public class SecurityConfig {
                 .authenticated()
                 .and()
                 .formLogin().successHandler(myAuthenticationSuccessHandler())
-                .loginPage("/auth/login")
+                .loginPage("/login")
                 .permitAll()
                 .usernameParameter("email")
                 .permitAll()
