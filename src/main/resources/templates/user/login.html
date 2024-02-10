@@ -79,14 +79,19 @@
         }
     </style>
 </head>
+
 <body>
 <div class="okvir prvi"> </div>
-<div class="okvir drugi"> WELCOME!  <br/>
-    <p>Drago nam je da se ponovo vidimo!</p>
-    <input type="text" placeholder="Username" />
-    <input type="password" id="passwordInput" placeholder="Password" /> <br/>
-    <button class="button" onclick="">Sign in</button>
-    <button class="button" onclick="">Register</button>
+<div class="okvir drugi">
+    <p>WELCOME! </p>
+    <form action="/login" method="post"> <!-- Login form -->
+        <input type="text" name="email" placeholder="Username" />
+        <input type="password" name="lozinka" placeholder="Password" /> <br />
+        <button class="button" type="submit">Sign in</button>
+    </form>
+    <form action="user/register" method="get"> <!-- Added form tag for registration -->
+        <button class="button" type="submit">Register</button>
+    </form>
 </div>
 </body>
 </html>
