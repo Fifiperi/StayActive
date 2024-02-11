@@ -1,10 +1,14 @@
 package fsre.stayactive.controllers;
 
+import fsre.stayactive.models.Role;
 import fsre.stayactive.models.User;
 import fsre.stayactive.repositories.UserRepository;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,20 +24,7 @@ public class UserController {
         return "user/login"; // Return the login form template
     }
 
-    @PostMapping("/login")
-    public String processLogin(@RequestParam String email, @RequestParam String lozinka) {
-        // Process login logic using Spring Security for authentication
-        // You may customize this part based on your authentication approach
-        // For now, let's assume a simple check using UserRepository
-        User user = userRepository.findByEmail(email);
-        if (user != null && user.getLozinka().equals(lozinka)) {
-            // Successful login, redirect to home page
-            return "redirect:user/gender";
-        } else {
-            // Failed login, show an error (you may add an error message to the model)
-            return "user/login";
-        }
-    }
+
 
     @GetMapping("user/register")
     public String showRegistrationForm(Model model) {
@@ -42,13 +33,19 @@ public class UserController {
     }
 
     @PostMapping("user/register")
-    public String processRegistration(User user) {
-        // Process registration logic (create user, store in the database, etc.)
-        // You can use userRepository.save(user) here
-        // For simplicity, let's assume no duplicate email check for now
-        userRepository.save(user);
-
-        // Redirect to login page after successful registration
-        return "redirect:user/login";
+    public String processRegistration(@Valid User user, BindingResult result, Model model) {
+        boolean errors = result.hasErrors();
+        if (errors){
+            model.addAttribute("user", user);
+            return "user/register";
+        } else {
+            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+            String passwordEncoded = encoder.encode(user.getLozinka());
+            user.setLozinka(passwordEncoded);
+            user.setPotvrdaLozinke(passwordEncoded);
+            user.setRole(Role.KORISNIK);
+            userRepository.save(user);
+            return "redirect:/user/login";
+        }
     }
 }

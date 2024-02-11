@@ -11,6 +11,7 @@ public class UserDetailsService implements org.springframework.security.core.use
     @Override
     public fsre.stayactive.models.UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User u = repository.findByEmail(username);
+        System.out.println(u.getEmail());
         return new fsre.stayactive.models.UserDetails(u);
     }
 }

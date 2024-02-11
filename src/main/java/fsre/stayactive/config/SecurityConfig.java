@@ -48,7 +48,7 @@ public class SecurityConfig {
                 .requestMatchers("/user/register/**","/user/register", "/images/**")
                 .permitAll()
                 .requestMatchers("/users/**").hasAuthority("TRENER")
-                .requestMatchers("//**").hasAuthority("KORISNIK")
+                .requestMatchers("/user/gender/**").hasAuthority("KORISNIK")
                 .anyRequest()
                 .authenticated()
                 .and()

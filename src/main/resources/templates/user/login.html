@@ -84,9 +84,9 @@
 <div class="okvir prvi"> </div>
 <div class="okvir drugi">
     <p>WELCOME! </p>
-    <form action="/login" method="post"> <!-- Login form -->
-        <input type="text" name="email" placeholder="Username" />
-        <input type="password" name="lozinka" placeholder="Password" /> <br />
+    <form th:action="@{/login}" method="post"> <!-- Login form -->
+        <input type="text" name="email" id="email" placeholder="Username" />
+        <input type="password" id="password" name="password" placeholder="Password" /> <br />
         <button class="button" type="submit">Sign in</button>
     </form>
     <form action="user/register" method="get"> <!-- Added form tag for registration -->
