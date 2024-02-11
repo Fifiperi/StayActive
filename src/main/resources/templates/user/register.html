@@ -82,12 +82,12 @@
 <div class="okvir prvi"> </div>
 <div class="okvir drugi">
   <p>WELCOME! </p>
-  <form action="/user/register" method="post"> <!-- Added form tag for registration -->
-    <input type="text" name="ime" placeholder="Unesite ime" />
-    <input type="text" name="prezime" placeholder="Unesite prezime" />
-    <input type="text" name="email" placeholder="Unesite email" />
-    <input type="password" name="lozinka" placeholder="Unesite lozinku" />
-    <input type="password" name="potvrdaLozinke" placeholder="Unesite ponovno lozinku" /> <br />
+  <form th:object="${user}" th:action="@{/user/register}" method="post"> <!-- Added form tag for registration -->
+    <input type="text" name="ime" placeholder="Unesite ime" th:field="*{ime}" />
+    <input type="text" name="prezime" placeholder="Unesite prezime" th:field="*{prezime}"/>
+    <input type="text" name="email" placeholder="Unesite email" th:field="*{email}"/>
+    <input type="password" name="lozinka" placeholder="Unesite lozinku" th:field="*{lozinka}"/>
+    <input type="password" name="potvrdaLozinke" placeholder="Unesite ponovno lozinku" th:field="*{potvrdaLozinke}"/> <br />
     <button class="button" type="submit">Register</button>
   </form>
 </div>
