@@ -16,7 +16,7 @@ public class Workout {
     @NotBlank(message="Polje ime je obvezno")
     String ime;
 
-    @Size(min=3, max=20, message = "Polje opis mora biti između 3 i 20 znakova.")
+    @Size(min=3, max=50, message = "Polje opis mora biti između 3 i 50 znakova.")
     @NotBlank(message="Polje opis je obvezno")
     String opis;
 
@@ -80,4 +80,13 @@ public Workout(){}
 
     @NotBlank(message="Polje tezinaVjezbe je obvezno")
     String tezinaVjezbe;
+
+    @Override
+    public String toString() {
+        return
+                "Ime vjezbe: " + ime + "<br>" +
+                "Opis: " + opis + "<br>" +
+                "Broj Ponavljanja: " + brojPonavljanja + "<br><br>" +
+                "Tezina:" + tezinaVjezbe;
+    }
 }

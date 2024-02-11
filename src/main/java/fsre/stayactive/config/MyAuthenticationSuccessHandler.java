@@ -17,7 +17,11 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
         if (authorities.stream().anyMatch(a -> a.getAuthority().equals("TRENER"))) {
             response.sendRedirect("/users");
         } else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("KORISNIK"))) {
+
             response.sendRedirect("/user/gender");
+
+
+
         } else {
             response.sendRedirect("/login");
         }
