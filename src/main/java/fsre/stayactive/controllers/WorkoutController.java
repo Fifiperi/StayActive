@@ -31,5 +31,13 @@ public class WorkoutController {
         model.addAttribute("vjezbe", vjezbe);
         return "user/female";
     }
-
+    @GetMapping("/user/male")
+    public String showMale(Model model){
+        List<Workout> sveVjezbe2 = workoutRepository.findAll();
+        Collections.shuffle(sveVjezbe2);
+        List<Workout> vjezbe = sveVjezbe2.subList(0, 6);
+        System.out.println(vjezbe.get(0).toString());
+        model.addAttribute("vjezbe", vjezbe);
+        return "user/male";
+    }
 }

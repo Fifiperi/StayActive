@@ -1,6 +1,8 @@
 USE StayActive;
 
-INSERT INTO workout (id, brojponavljanja, ime, opis, tezina_vjezbe) VALUES
+ALTER TABLE workout MODIFY opis VARCHAR(50);
+
+INSERT INTO workout (id, broj_ponavljanja, ime, opis, tezina_vjezbe) VALUES
                                                                         (0, 230, 'Sklekovi', 'Za jačanje Ruka i Prsa', 'Normalan'),
                                                                         (1, 350, 'Trbušnjaci', 'Za jačanje Abdomena', 'Napredan'),
                                                                         (2, 120, 'Čučnjevi', 'Za Jačanje Noga i Stražnjice', 'Početnik'),

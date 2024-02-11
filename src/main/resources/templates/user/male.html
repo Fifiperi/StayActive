@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("/images/p.jpg");
+      background-size: cover;
+    }
+    .quote{
+      background-color: rgba(212, 212, 212, 0.399);
+      position: absolute;
+      height: 78px;
+      width: 100%;
+      font-family: "Courier New";
+      font-size: 25px;
+      text-align: center;
+      line-height: 109px;
+      color: white;
+      backdrop-filter: blur(5px);
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.40);
+      border-radius: 15px;
+    }
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      position: absolute;
+      top: 137px;
+      left: 30px;
+    }
+    .okvir{
+      border-radius: 16px;
+      display: inline-block;
+      height: 49vh;
+      width: 229px;
+      max-width: 400px;
+      max-height:49vh;
+      color: white;
+      text-align: center;
+      line-height: 46vh;
+      margin: 0.5vh;
+      font-size: 30px;
+      font-family: "Courier New";
+      transition: transform 0.4s;
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.40);
+      cursor: pointer;
+    }
+    .okvir1 {
+      background-image: url("/images/slikaa.avif");
+    }
+    .okvir2{
+      background-position: top;
+      background-image: url("/images/slika2.jpg");
+    }
+    .okvir3{
+      background-image: url("/images/slika3.avif");
+    }
+    .okvir4{
+      background-position: center;
+      background-image: url("/images/slika4.avif");
+    }
+
+    .okvir5{
+      background-position: center;
+      background-image: url("/images/slika5.webp");
+    }
+    .okvir6{
+      background-position: center;
+      background-image: url("/images/slika6.jpg");
+    }
+    .okvir:hover {
+      transform: rotateY(180deg) scale(1.0);
+    }
+    .okvir .back-content {
+      display: none;
+      transform: rotateY(180deg) scale(1.2);
+      border-radius: 10px;
+      color: black;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 70%, rgba(211, 211, 211, 0.95));
+
+    }
+
+    .okvir:hover .front-content {
+      display: none;
+    }
+    .okvir:hover .back-content {
+      font-size: 16px;
+      display: block;
+      line-height: 5vh;
+      position: relative;
+      height: 49vh;
+      max-width: 229px;
+    }
+    .timer-container {
+      text-align: center;
+      position: fixed;
+      bottom: 79px;
+      width: 100%;
+      height: 100px;
+      color:  rgb(128, 127, 124);
+    }
+    .prikazvremena {
+      font-size: 4vw;
+      font-family: "Courier New";
+      text-shadow: 0px 5px 15px rgba(161, 160, 160, 0.5);
+      color: rgb(128, 127, 124);
+    }
+    .result {
+      text-align: center;
+      font-size: 25px;
+      font-family: "Courier New";
+      font-weight: bold;
+      color: white;
+
+    }
+    .button{
+      background-color: rgb(128, 127, 124);
+      display: inline;
+      padding: 1.4vh;
+      border-radius: 1vh;
+      cursor: pointer;
+      font-size: 1.2vw;
+      font-weight: bold;
+      width: 12.3vw;
+      box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+      border-color: white ;
+      color:white;
+    }
+  </style>
+</head>
+<body>
+<div class="quote"> Be stronger than your excuses!</div>
+<div class="grid-container">
+  <div class="okvir okvir1">
+    <div class="  front-content">VJEŽBA 1</div>
+    <div class="back-content" th:utext="${vjezbe.get(0).toString()}"> obrunto</div></div>
+  <div class="okvir okvir2">
+    <div class="  front-content"> VJEŽBA 2</div>
+    <div class="back-content" th:utext="${vjezbe.get(1).toString()}"> obrunto</div></div>
+  <div class="okvir okvir3">
+    <div class="front-content"> VJEŽBA 3 </div>
+    <div class="back-content" th:utext="${vjezbe.get(2).toString()}">obrnuto</div> </div>
+  <div class="okvir okvir4">
+    <div class="front-content">VJEŽBA 4</div>
+    <div class="back-content" th:utext="${vjezbe.get(3).toString()}">obrunuto</div></div>
+  <div class="okvir okvir5 ">
+    <div class="front-content">VJEŽBA 5</div>
+    <div class="back-content" th:utext="${vjezbe.get(4).toString()}">obrnuto</div></div>
+  <div class="okvir okvir6">
+    <div class=" front-content">VJEŽBA 6</div>
+    <div class="back-content" th:utext="${vjezbe.get(5).toString()}">obrunto</div></div>
+</div>
+<div class="timer-container">
+  <div id="time-display" class="prikazvremena">00:00:00</div>
+  <button id="start-button" class="button button1" onclick="startTimer()">Start</button>
+  <button id="stop-button" class="button button2" onclick="stopTimer()" disabled>Stop</button><br>
+
+  <div id="result" class="result"></div></div>
+<script>
+  var pocetak, kraj;
+  var timerInterval;
+  var timerpokrenut = false;
+
+  function startTimer() {
+    pocetak = new Date();
+    timerpokrenut = true;
+    document.getElementById('start-button').disabled = true;
+    document.getElementById('stop-button').disabled = false;
+
+    timerInterval = setInterval(updateTimer, 1000);
+  }
+
+  function stopTimer() {
+    if (timerpokrenut) {
+      clearInterval(timerInterval);
+      kraj = new Date();
+      timerpokrenut = false;
+      document.getElementById('start-button').disabled = false;
+      document.getElementById('stop-button').disabled = true;
+      rezz();
+    }
+  }
+  function updateTimer() {
+    var currentTime = new Date();
+    var proteklo = new Date(currentTime - pocetak);
+    var sati = dodajnulu(proteklo.getHours()-1);
+    var minute = dodajnulu(proteklo.getMinutes());
+    var seconds = dodajnulu(proteklo.getSeconds());
+
+    document.getElementById('time-display').textContent =
+            sati + ':' + minute + ':' + seconds;
+  }
+
+  function dodajnulu(number) {
+    return (number < 10 ? '0' : '') + number;
+  }
+  function rezz() {
+    var milisekunde = kraj - pocetak;
+    var sekunde = Math.floor(milisekunde / 1000);
+    var sati = Math.floor(sekunde / 3600);
+    var minute = Math.floor((sekunde % 3600) / 60);
+    var seconds = sekunde % 60;
+
+    var rezultat = document.getElementById('result');
+    if(sati == 0 ){
+      if(minute == 0){
+        rezultat.textContent = "Prošlo je " + seconds + " sekundi.";
+      }
+      else{  rezultat.textContent = "Prošlo je " + minute + " minuta i " + seconds + " sekundi.";}
+    }
+    else {rezultat.textContent = "Prošlo je " + sati + " sati, " + minute + " minuta i " + seconds + " sekundi.";
+    }}
+</script>
+</body>
+</html>

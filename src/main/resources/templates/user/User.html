@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LISTA KORISNIKA</title>
+    <style>
+        body{
+            background-color:beige;
+        }
+
+        table{
+
+            width: 100%;
+
+        }
+        .button {
+            background-color:lightblue;
+            color: white;
+            padding: 1.7vh;
+            border-radius: 1vh;
+            cursor: pointer;
+            font-size: 1vw;
+            width: 120px;
+            height: 90px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .button:hover {
+            transform: scale(1.2);
+        }
+        .dodaj{
+
+            background-color:lightgreen ;
+            width: 200px;
+            cursor: pointer;
+            height: 40px;
+            position: absolute;
+
+        }
+
+    </style>
+</head>
+<body>
+
+
+<h2>Lista korisnika:</h2>
+<button class="dodaj" onclick>Dodajte novog korisnika</button><br><br><br>
+
+<table>
+    <tr>
+        <td>Ime:</td>
+        <td>Prezime:</td>
+        <td>Email:</td>
+    </tr>
+</table>
+</body>
+</html>
