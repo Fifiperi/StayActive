@@ -15,7 +15,7 @@ public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
         // Logika preusmjeravanja na osnovu uloge
         if (authorities.stream().anyMatch(a -> a.getAuthority().equals("TRENER"))) {
-            response.sendRedirect("/users");
+            response.sendRedirect("/user/trainer");
         } else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("KORISNIK"))) {
 
             response.sendRedirect("/user/gender");

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #C7C8CC;
+            background-size: cover;
+        }
+        .okvir {
+            display: inline-block;
+            position: relative;
+            margin: 0.2vh;
+        }
+        .prvi {
+            height: 73vh;
+            width: 100%;
+            max-width: 45vw;
+            background-image: url("/images/prva.jpg");
+            background-position: center;
+            background-size: cover;
+            opacity: 0.82;
+            border-radius: 2vh 0vh 0vh 2vh;
+        }
+        .prvi img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 2vh 0vh 0vh 2vh;
+        }
+        .drugi {
+            height: 73vh;
+            width: 55vh;
+            max-width: 45vw;
+            background-color: rgba(58, 55, 55, 0.516);
+            text-align: center;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 3vw;
+            border-radius: 0vh 2vh 2vh 0vh;
+            box-sizing: border-box;
+        }
+        p {
+            font-size: 2.99vh;
+            padding-top: 0.5vh;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        input[type="text"],
+        input[type="password"] {
+            position: relative;
+            width: 20vw;
+            padding: 1.1vh;
+            height: 3vh;
+            border-radius: 1vh;
+            opacity: 0.8;
+            color: rgba(62, 59, 59, 0.553);
+            margin-bottom: 1vh;
+        }
+        .button {
+            background: #9ea0a1;
+            background-image: -webkit-linear-gradient(top, #9ea0a1, #3b3b3b);
+            background-image: -moz-linear-gradient(top, #9ea0a1, #3b3b3b);
+            background-image: -ms-linear-gradient(top, #9ea0a1, #3b3b3b);
+            background-image: -o-linear-gradient(top, #9ea0a1, #3b3b3b);
+            background-image: linear-gradient(to bottom, #9ea0a1, #3b3b3b);
+            -webkit-border-radius: 10;
+            -moz-border-radius: 10;
+            border-radius: 10px;
+            font-family: Arial;
+            color: #ffffff;
+            font-size: 20px;
+            padding: 10px 20px 10px 20px;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            background: #bababa;
+            background-image: -webkit-linear-gradient(top, #bababa, #787878);
+            background-image: -moz-linear-gradient(top, #bababa, #787878);
+            background-image: -ms-linear-gradient(top, #bababa, #787878);
+            background-image: -o-linear-gradient(top, #bababa, #787878);
+            background-image: linear-gradient(to bottom, #bababa, #787878);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+<div class="okvir prvi"> </div>
+<div class="okvir drugi">
+    <p>WELCOME! </p>
+    <form th:object="${user}" th:action="@{/user/add}" method="post"> <!-- Added form tag for registration -->
+        <input type="text" name="ime" placeholder="Unesite ime" th:field="*{ime}" />
+        <input type="text" name="prezime" placeholder="Unesite prezime" th:field="*{prezime}"/>
+        <input type="text" name="email" placeholder="Unesite email" th:field="*{email}"/>
+        <input type="password" name="lozinka" placeholder="Unesite lozinku" th:field="*{lozinka}"/>
+        <input type="password" name="potvrdaLozinke" placeholder="Unesite ponovno lozinku" th:field="*{potvrdaLozinke}"/> <br />
+        <div>
+            <input type="radio" id="korisnik" name="role" value="KORISNIK" th:field="*{role}" checked />
+            <label for="korisnik">Korisnik</label>
+        </div>
+        <div>
+            <input type="radio" id="trener" name="role" value="TRENER" th:field="*{role}" checked />
+            <label for="trener">Trener</label>
+        </div>
+        <button class="button" type="submit">Add</button>
+    </form>
+</div>
+</body>
+</html>

@@ -45,10 +45,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests()
-                .requestMatchers("/user/register/**","/user/register", "/images/**")
+                .requestMatchers("/user/register/**", "/images/**")
                 .permitAll()
-                .requestMatchers("/users/**").hasAuthority("TRENER")
-                .requestMatchers("/user/gender/**",  "/user/female","/user/male").hasAuthority("KORISNIK")
+                .requestMatchers("/user/gender/**",  "/user/female/**","/user/male/**").hasAnyAuthority("KORISNIK", "TRENER")
+                .requestMatchers("/user/**").hasAuthority("TRENER")
                 .anyRequest()
                 .authenticated()
                 .and()

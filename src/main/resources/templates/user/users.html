@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista Korisnika</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body style="background-color: #B4B4B8;">
+<div class="container mt-5">
+    <h2>Lista Korisnika</h2>
+    <a href="/user/add" class="btn btn-secondary">Dodaj Novog Korisnika</a>
+    <a href="/user/gender" class="btn btn-secondary">Prikaz vježbi</a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Ime</th>
+            <th>Prezime</th>
+            <th>Email</th>
+            <!-- Dodajte dodatne stupce ako je potrebno -->
+            <th>Uloge</th>
+            <th>Akcije</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.ime}">Ime</td>
+            <td th:text="${user.prezime}">Prezime</td>
+            <td th:text="${user.email}">Email</td>
+            <!-- Dodajte dodatne ćelije ako je potrebno -->
+            <td>
+                <span class="badge badge-secondary mr-1" th:text="${user.role}"></span>
+            </td>
+            <td>
+                <div>
+                    <form th:action="@{/users/delete/{userId}(userId=${user.id})}" method="post" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Obriši</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
