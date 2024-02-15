@@ -50,7 +50,7 @@ public class UserController {
             user.setPotvrdaLozinke(passwordEncoded);
             user.setRole(Role.KORISNIK);
             userRepository.save(user);
-            return "redirect:/user/login";
+            return "redirect:/login";
         }
     }
 
